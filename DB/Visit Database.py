@@ -3,10 +3,10 @@ import pymssql
 class Mssql:
     #数据库基本信息
     def __init__(self):
-        self.ip = "221.224.198.59"
-        self.user = "iuser-jfvz"
-        self.password = "[abcd1234]"
-        self.database = "DangJian"
+        self.ip = ""
+        self.user = ""
+        self.password = ""
+        self.database = ""
     # 创建连接对象
     def __connect_databases(self):
         try:
