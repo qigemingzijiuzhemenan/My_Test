@@ -5,3 +5,4 @@
 #report生成html报告的模块
 #main主执行文件
 #Assertion/Deep assertion 源自饭大佬，连接地址：https://blog.csdn.net/qq_22795513/article/details/76187722
+#DB模块与数据库连接已建立，目前对接了Sql servers和MySQL两种数据库，需要在类里配置数据库相关信息就能使用，此模块功能待完善
