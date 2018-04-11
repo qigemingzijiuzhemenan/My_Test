@@ -15,6 +15,7 @@ class Api_Test():
             r = resqus.get_requests(self.api)
         elif self.method =="post":
             r = resqus.post_requests(self.api,self.data)
+            # print(r)
         return r
     # 获取请求状态码
     def get_status(self):
@@ -27,10 +28,10 @@ class Api_Test():
     def get_url(self):
         return self.apitest()[2]
 
-    # #获取请求信息类型
-    # def get_content_type(self):
-    #     rp_headers = self.apitest().headers
-    #     return rp_headers
+# #获取请求信息类型
+# def get_content_type(self):
+#     rp_headers = self.apitest().headers
+#     return rp_headers
 
 
 # 测试此模块

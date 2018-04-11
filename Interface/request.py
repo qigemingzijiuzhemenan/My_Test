@@ -8,13 +8,18 @@ class Requests():
 
     def __init__(self):
         self.url = "http://dev.api.jfvz.ssoct.cn/"
+        # self.url = "https://api-jiguan.ssoct.cn/"
         # self.url = "http://dj.ssoct.cn/"
     def get_requests(self,api):
         headers = {}
         try:
             url = self.url + api
             res = requests.get(url=url, headers=Requests.headers)  # verify=False做https请求用的
-            response = res.json()
+            if not res.content:
+                response =None
+            else:
+                response = res.json()
+            # print(type(response))
             # print(response)
             # print("请求状态：", res.status_code)
             # for key in response:
@@ -34,7 +39,12 @@ class Requests():
         try:
             url = self.url + api
             res = requests.post(url=url, headers=Requests.headers, data=data)  # verify=False做https请求用的
+            if not res.content:
+                response =None
+            else:
+                response = res.json()
             response = res.json()  # verify=False做https请求用的
+            # print(type(response))
             # print(response)
             # print("请求状态：", res.status_code)
             # for key in response:
@@ -46,16 +56,15 @@ class Requests():
         except Exception as Error:
             print("请求出错，原因是：%s" % (Error))
 
-        print('\n')
 
 
 #测试此模块
 # test = Requests()
-# api = "api/Members/47cadf47-31e9-4e08-a312-28b3f6965dbe"
+# api = "api/Members"
 # data = None
 # headers = {}
 # method = "get"
-# test  = test.get_requests(api,headers)
+# test  = test.get_requests(api)
 # print(test)
 
 
