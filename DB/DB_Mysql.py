@@ -25,7 +25,7 @@ class DB():
         except pymysql.Error as Error:
             print("数据库连接失败：%s" % (Error))
 
-        #查询第一行数据
+        #查询数据
     def select_data(self,SQL):
         try:
             cursor = self.__connect_databases()     #建立游标
