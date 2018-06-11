@@ -31,13 +31,18 @@ class DB():
             cursor = self.__connect_databases()     #建立游标
             cursor.execute(SQL)      #在游标上使用SQL语句
             name = cursor.description
+            values = cursor.fetchall()  # 返回所有数据
             # row = cursor.fetchone()  #返回一行数据
             # row = cursor.fetchmany(2)#返回两行数据
-            row = cursor.fetchall()    #返回所有数据
-            return name,row
+            data = {}
+            for i in range(len(name)):
+                data[name[i][0]] = []
+                for a in range(len(values)):
+                    data[name[i][0]].append(values[a][i])
+            return data
         except pymysql.Error as Error:
             print("查询出错：%s" % (Error))
-        finally:                          #无论怎样都会执行下面的关闭连接数据库的代码
+        finally:  # 无论怎样都会执行下面的关闭连接数据库的代码
             self.conn.close()
 
 
@@ -46,14 +51,8 @@ class DB():
 # db = DB()
 # sql = 'select * from activity;'
 #
-# keys,values = db.select_data(sql)
+# data = db.select_data(sql)
 # # print(values)
 # # print(keys)
-# data = {}
-# for i in range(len(keys)):
-#     data[keys[i][0]] = []
-#     for a in range(len(values)):
-#         data[keys[i][0]].append(values[a][i])
-#
 # for b in data.items():
 #     print(b)
