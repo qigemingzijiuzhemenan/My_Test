@@ -4,11 +4,11 @@ class DB():
     #连接数据库
     def __init__(self):
         #Oracle的参数
-        self.username = "szjpt"
-        self.password = "Azljd540!"
-        self.host = "192.168.59.24"
+        self.username = ""
+        self.password = ""
+        self.host = ""
         self.port = "1521"
-        self.sid = "orcl"
+        self.sid = ""
         self.dsn = cx_Oracle.makedsn(self.host,self.port,self.sid)
 
     # 创建连接对象
