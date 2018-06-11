@@ -24,11 +24,19 @@ class Mssql:
             values = cur.fetchall()          #返回所有数据
             # values = cur.fetchone()          #返回第一条数据
             # values = cur.fetchmany(2)        #返回前两条数据
-            data = {}
-            for i in range(len(name)):
-                data[name[i][0]] = []
-                for a in range(len(values)):
-                    data[name[i][0]].append(values[a][i])
+            data = []
+            num = 0
+            while num < len(values):
+                # print(values[num])
+                # d = []
+                num_1 = 0
+                c = {}
+                while num_1 < len(name):
+                    c[name[num_1][0]] = values[num][num_1]
+                    num_1 += 1
+                data.append(c)
+                # print(d)
+                num += 1
             return data
         except pymssql.Error as Error:
             print("查询出错：%s"%(Error))
